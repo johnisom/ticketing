@@ -25,6 +25,7 @@ class TicketsController < ApplicationController
   # POST /tickets.json
   def create
     @ticket = Ticket.new(ticket_params)
+    #@ticket.tag_ids = params[:ticket][:tag_ids]
 
     respond_to do |format|
       if @ticket.save
@@ -69,6 +70,7 @@ class TicketsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ticket_params
-      params.require(:ticket).permit(:name, :body, :status, :project_id)
+      params.require(:ticket)
+        .permit(:name, :body, :status, :project_id, tag_ids: [])
     end
 end
