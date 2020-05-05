@@ -6,4 +6,8 @@ class Tag < ApplicationRecord
   def self.alphabetical
     all.sort_by(&:name)
   end
+
+  def ticket_count
+    tickets.size
+  end
 end
