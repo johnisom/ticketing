@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :project_id %>
+    <%= form.collection_select :project_id, Project.all, :id, :name %>
+  </div>
+
+  <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
@@ -23,12 +28,7 @@
 
   <div class="field">
     <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :project_id %>
-    <%= form.number_field :project_id %>
+    <%= form.select :status, Ticket::STATUSES.map { |t| [t, t] } %>
   </div>
 
   <div class="actions">
