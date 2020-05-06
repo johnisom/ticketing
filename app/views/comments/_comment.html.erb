@@ -1,7 +1,15 @@
-<p><%= comment.body %></p>
-<em>
-  posted by <%= comment.creator.name %>
-  <%= time_ago_in_words(comment.created_at) %> ago
-</em>
-<br>
-<%= link_to 'Edit', edit_ticket_comment_path(@ticket, comment) %>
+<div>
+  <p><%= comment.body %></p>
+
+  <em>
+    posted by <%= comment.creator.name %>
+    <%= time_ago_in_words(comment.created_at) %> ago
+  </em>
+
+  <% if current_user == comment.creator %>
+    <br>
+    <%= link_to 'edit', edit_ticket_comment_path(@ticket, comment) %>
+  <% end %>
+
+  <hr>
+</div>

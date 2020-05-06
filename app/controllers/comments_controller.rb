@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, except: :create
   before_action :require_user
-  before_action :require_same_user
+  before_action :require_same_user, except: :create
   
   # POST /tickets/:ticket_id/comments
   def create
@@ -41,6 +41,9 @@ class CommentsController < ApplicationController
   end
 
   def require_same_user
-    # TODO
+    unless current_user == @comment.creator
+      flash[:notice] = 'You must be the creator to do that'
+      redirect_back fallback_location: root_path
+    end
   end
 end
