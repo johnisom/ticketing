@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :projects
   resources :tags, except: :show
   resources :tickets do
-    resources :comments, only: %i[create edit update destroy]
+    resources :comments, only: %i[create edit update]
   end
 
   post '/users', to: 'users#create'

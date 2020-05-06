@@ -25,10 +25,6 @@ class CommentsController < ApplicationController
   def update
   end
 
-  # DELETE /tickets/:ticket_id/comments/:comment_id
-  def destroy
-  end
-
   private
 
   def comment_params
