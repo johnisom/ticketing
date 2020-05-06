@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-
   helper_method :current_user, :logged_in?
 
   def current_user
@@ -16,7 +15,14 @@ class ApplicationController < ActionController::Base
   def require_user
     unless logged_in?
       flash[:notice] = 'You must be logged in to do that'
-      redirect_to root_path
+      redirect_back fallback_location: root_path
+    end
+  end
+
+  def require_no_user
+    if logged_in?
+      flash[:notice] = 'You must be logged out to do that'
+      redirect_back fallback_location: root_path
     end
   end
 end

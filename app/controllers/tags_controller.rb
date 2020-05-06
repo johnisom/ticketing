@@ -1,5 +1,6 @@
 class TagsController < ApplicationController
-  before_action :set_tag, only: [:edit, :update, :destroy]
+  before_action :set_tag, only: %i[edit update destroy]
+  before_action :require_user, except: :index
 
   # GET /tags
   def index

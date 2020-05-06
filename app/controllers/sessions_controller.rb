@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  before_action :require_user, only: :destroy
+  before_action :require_no_user, except: :destroy
+
   # GET /login
   def new
   end
