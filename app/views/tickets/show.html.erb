@@ -3,12 +3,12 @@
 
 <p>
   <strong>Tags:</strong>
-  <%= list_tags(@ticket) %>
+  <%= list_tags @ticket %>
 </p>
 
 <p>
   <strong>Status:</strong>
-  <%= @ticket.status %>
+  <%= pretty_status @ticket %>
 </p>
 
 <p>
