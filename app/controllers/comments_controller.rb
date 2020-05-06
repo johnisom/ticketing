@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   
   # POST /tickets/:ticket_id/comments
   def create
-    @comment = Comment.new(comment_params)
+    @comment = Comment.new(create_comment_params)
     @ticket = @comment.ticket
 
     if @comment.save
@@ -23,13 +23,25 @@ class CommentsController < ApplicationController
 
   # PATCH/PUT /tickets/:ticket_id/comments/:comment_id
   def update
+    @ticket = @comment.ticket
+
+    if @comment.update(update_comment_params)
+      flash[:success] = 'Comment successfully updated.'
+      redirect_to @comment.ticket
+    else
+      render :edit
+    end
   end
 
   private
 
-  def comment_params
+  def create_comment_params
     params.require(:comment).permit(:body)
       .merge({ ticket_id: params[:ticket_id], creator: current_user })
+  end
+
+  def update_comment_params
+    params.require(:comment).permit(:body)
   end
 
   def set_comment
