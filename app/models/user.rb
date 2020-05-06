@@ -5,6 +5,7 @@ class User < ApplicationRecord
   validates :password, on: :create, confirmation: true, length: { minimum: 5 }
 
   has_many :tickets
+  has_many :comments
 
   def self.alphabetical
     all.sort_by(&:name)
