@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_05_06_141943) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "open", default: true
     t.integer "creator_id"
-    t.integer "asignee_id"
+    t.integer "assignee_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,6 +53,6 @@ ActiveRecord::Schema.define(version: 2020_05_06_141943) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "tickets", "users", column: "asignee_id"
+  add_foreign_key "tickets", "users", column: "assignee_id"
   add_foreign_key "tickets", "users", column: "creator_id"
 end
