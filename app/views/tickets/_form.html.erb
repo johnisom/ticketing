@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= form.label :status %>
-    <%= form.select :status, Ticket::STATUSES.map { |t| [t, t] } %>
+    <%= form.select :status, Ticket::STATUSES.map { |t| [t.titleize, t] } %>
   </div>
 
   <div class="assignee">
