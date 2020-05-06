@@ -9,6 +9,7 @@ class TicketsController < ApplicationController
 
   # GET /tickets/1
   def show
+    @comment = Comment.new
   end
 
   # GET /tickets/new
