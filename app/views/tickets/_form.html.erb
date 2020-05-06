@@ -31,6 +31,11 @@
     <%= form.select :status, Ticket::STATUSES.map { |t| [t, t] } %>
   </div>
 
+  <div class="assignee">
+    <%= form.label :assignee %>
+    <%= form.collection_select :assignee_id, User.alphabetical, :id, :name, include_blank: 'No One' %>
+  </div>
+
   <div class="field">
     <%= form.label :tag_ids, 'Tags' %>
     <%= form.collection_select :tag_ids, Tag.alphabetical, :id, :name, {}, multiple: true, size: Tag.count %>

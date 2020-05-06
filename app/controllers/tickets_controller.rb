@@ -58,7 +58,7 @@ class TicketsController < ApplicationController
 
   def ticket_params
     params.require(:ticket)
-      .permit(:name, :body, :status, :project_id, tag_ids: [])
+      .permit(:name, :body, :status, :project_id, :assignee_id, tag_ids: [])
       .merge({ open: params[:ticket][:status] != 'fixed' })
   end
 end

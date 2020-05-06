@@ -3,17 +3,22 @@
 
 <p>
   <strong>Tags:</strong>
-  <%= list_tags @ticket %>
+  <%= show_tags @ticket %>
 </p>
 
 <p>
   <strong>Status:</strong>
-  <%= pretty_status @ticket %>
+  <%= show_status @ticket %>
 </p>
 
 <p>
   <strong>Creator:</strong>
   <%= @ticket.creator.name %>
+</p>
+
+<p>
+  <strong>Assignee:</strong>
+  <%= show_assignee @ticket %>
 </p>
 
 <p>
