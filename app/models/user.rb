@@ -3,4 +3,6 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email_address, presence: true, uniqueness: true, format: /\A.+@.+\z/
   validates :password, on: :create, confirmation: true, length: { minimum: 5 }
+
+  has_many :tickets
 end

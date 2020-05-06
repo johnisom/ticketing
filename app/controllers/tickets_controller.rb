@@ -23,6 +23,7 @@ class TicketsController < ApplicationController
   # POST /tickets
   def create
     @ticket = Ticket.new(ticket_params)
+    @ticket.creator = current_user
 
     if @ticket.save
       flash[:success] = 'Ticket was successfully created.'
