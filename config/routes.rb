@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   root 'projects#index'
 
   resources :projects
-  resources :tickets
   resources :tags, except: :show
+  resources :tickets do
+    resources :comments, only: %i[create edit update destroy]
+  end
 
   post '/users', to: 'users#create'
 
