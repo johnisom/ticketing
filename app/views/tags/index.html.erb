@@ -5,7 +5,9 @@
     <tr>
       <th>Name</th>
       <th>Tickets</th>
-      <th colspan="2"></th>
+      <% if logged_in? %>
+        <th colspan="2"></th>
+      <% end %>
     </tr>
   </thead>
 
@@ -14,8 +16,10 @@
       <tr>
         <td><%= tag.name %></td>
         <td align="center"><%= tag.ticket_count %></td>
-        <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-        <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if logged_in? %>
+          <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
+          <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -23,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New Tag', new_tag_path %>
+<%= link_to('New Tag', new_tag_path) if logged_in? %>

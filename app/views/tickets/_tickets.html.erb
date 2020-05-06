@@ -6,7 +6,9 @@
       <th>Status</th>
       <th>Project</th>
       <th>Tags</th>
-      <th colspan="2"></th>
+      <% if logged_in? %>
+        <th colspan="2"></th>
+      <% end %>
     </tr>
   </thead>
 
@@ -18,8 +20,10 @@
         <td><%= ticket.status %></td>
         <td><%= ticket.project.name %></td>
         <td><%= list_tags ticket %></td>
-        <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
-        <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if logged_in? %>
+          <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
+          <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
