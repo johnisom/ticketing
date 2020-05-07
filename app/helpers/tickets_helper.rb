@@ -30,4 +30,10 @@ module TicketsHelper
     status_opts = options_for_select(statuses, params[:status])
     select_tag :status, status_opts, include_blank: 'Any Status'
   end
+
+  def tag_filter_select
+    tags = Tag.order(:name).map { |t| [t.name, t.id] }
+    tag_opts = options_for_select(tags, params[:tag_id])
+    select_tag :tag_id, tag_opts, include_blank: '-'
+  end
 end

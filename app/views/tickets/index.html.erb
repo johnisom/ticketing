@@ -5,6 +5,8 @@
   <%= project_filter_select %> <%# See TicketsHelper#project_filter_select %>
   with status
   <%= status_filter_select %> <%# See TicketsHelper#status_filter_select %>
+  tagged
+  <%= tag_filter_select %> <%# See TicketsHelper#tag_filter_select %>
   <input type="submit" value="Filter">
   <%= link_to 'Clear filters', tickets_path %>
 <% end %>
