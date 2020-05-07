@@ -14,6 +14,57 @@
  *= require_self
  */
 
-p.danger { color: red; }
-p.success { color: green; }
-p.notice { color: blue; }
+body {
+  margin: 0;
+}
+
+body > p, main {
+  margin: 33px;
+}
+
+header {
+  background-color: #eee;
+  padding: 15px 30px;
+}
+
+header * {
+  display: inline-block;
+}
+
+header h2 {
+  margin-right: 20px;
+}
+
+header nav ul {
+  list-style-type: none;
+  padding: 0
+}
+
+header a {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+header span:last-child {
+  float: right;
+  margin-top: 15px;
+}
+
+p.danger, p.success, p.notice {
+  color: #fff;
+  display: inline-block;
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
+p.danger {
+  background-color: #c00;
+}
+
+p.success {
+  background-color: #0c0;
+}
+
+p.notice {
+  background-color: #00c;
+}
