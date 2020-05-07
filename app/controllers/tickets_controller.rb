@@ -4,16 +4,12 @@ class TicketsController < ApplicationController
 
   # GET /tickets
   def index
-    @tickets = if params[:project_id].present? && params[:status].present?
-                 Ticket.where(project_id: params[:project_id],
-                              status: params[:status])
-               elsif params[:project_id].present?
-                 Ticket.where(project_id: params[:project_id])
-               elsif params[:status].present?
-                 Ticket.where(status: params[:status])
-               else
-                 Ticket.all
-               end
+    where_params = { project_id: params[:project_id],
+                     status: params[:status],
+                     tag_id: params[:tag_id] }
+    where_params = where_params.filter { |_, val| val.present? }
+
+    @tickets = where_params.size.zero? ? Ticket.all : Ticket.where(where_params)
   end
 
   # GET /tickets/1
