@@ -1,5 +1,17 @@
 <h1>Tickets</h1>
 
+<%= form_with method: 'get', local: true do %>
+  Show tickets from
+  <% project_opts = options_for_select(Project.order(:name).map { |p| [p.name, p.id] }) %>
+  <%= select_tag :project_id, project_opts, include_blank: 'Any Project' %>
+  with status
+  <% status_opts = options_for_select(Ticket::STATUSES.map { |t| [t.titleize, t] }) %>
+  <%= select_tag :status, status_opts, include_blank: 'Any Status' %>
+  <%= submit_tag 'Filter' %>
+  <%= link_to 'Clear filters', tickets_path %>
+<% end %>
+<br>
+
 <%= render 'tickets' %>
 <br>
 <%= link_to('New Ticket', new_ticket_path) if logged_in? %>
