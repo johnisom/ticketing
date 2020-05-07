@@ -10,18 +10,21 @@
   </thead>
 
   <tbody>
-    <% @tags.each do |tag| %>
+    <% @tags_counts.each do |tag_counts| %>
       <tr>
-        <td><%= tag.name %></td>
+        <td><%= tag_counts['name'] %></td>
         <td align="center">
-          <%= link_to tag.ticket_count,
+          <%= link_to tag_counts['count'],
                       controller: 'tickets',
                       action: 'index',
-                      tag_id: tag.id %>
+                      tag_id: tag_counts['id'] %>
         </td>
         <% if logged_in? %>
-          <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-          <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Edit', edit_tag_path(id: tag_counts['id']) %></td>
+          <td><%= link_to 'Destroy',
+                          tag_path(id: tag_counts['id']),
+                          method: :delete,
+                          data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>

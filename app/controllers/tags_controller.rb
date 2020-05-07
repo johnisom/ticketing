@@ -4,7 +4,7 @@ class TagsController < ApplicationController
 
   # GET /tags
   def index
-    @tags = Tag.all
+    @tags_counts = Tag.tickets_counts
   end
 
   # GET /tags/new
