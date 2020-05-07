@@ -8,6 +8,12 @@ class TicketsController < ApplicationController
     where_params = where_params.filter { |_, val| val.present? }
 
     @tickets = where_params.size.zero? ? Ticket.all : Ticket.where(where_params)
+
+    if params[:tag_id].present?
+      @tickets = @tickets.filter do |ticket|
+        ticket.tag_ids.include? params[:tag_id].to_i
+      end
+    end
   end
 
   # GET /tickets/1
