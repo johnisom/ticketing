@@ -19,6 +19,11 @@
     <%= form.text_area :body %>
   </div>
 
+  <div class="field">
+    <%= label_tag :ticket_status, 'Update ticket status' %>
+    <%= select_tag :ticket_status, options_for_select(ticket_statuses), include_blank: 'Do not change' %>
+  </div>
+
   <div class="actions">
     <%= form.submit 'Create Comment' %>
     <% unless @comment.new_record? %>

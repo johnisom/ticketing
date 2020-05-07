@@ -25,10 +25,6 @@ module TicketsHelper
     select_tag :project_id, project_opts, include_blank: 'All Projects'
   end
 
-  def ticket_statuses
-    Ticket::STATUSES.map { |s| [s.titleize, s] }
-  end
-
   def status_filter_select
     statuses = ticket_statuses
     status_opts = options_for_select(statuses, params[:status])
