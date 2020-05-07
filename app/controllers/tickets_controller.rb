@@ -4,9 +4,7 @@ class TicketsController < ApplicationController
 
   # GET /tickets
   def index
-    where_params = { project_id: params[:project_id],
-                     status: params[:status],
-                     tag_id: params[:tag_id] }
+    where_params = { project_id: params[:project_id], status: params[:status] }
     where_params = where_params.filter { |_, val| val.present? }
 
     @tickets = where_params.size.zero? ? Ticket.all : Ticket.where(where_params)
