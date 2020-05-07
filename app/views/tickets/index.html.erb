@@ -12,6 +12,14 @@
 <% end %>
 <br>
 
-<%= render 'tickets' %>
+<% if @tickets.size.zero? %>
+  <em>
+    There are no tickets matching the selected filters.
+    <%= link_to 'Clear filters', tickets_path %>
+  </em>
+<% else %>
+  <%= render 'tickets' %>
+<% end %>
+
 <br>
 <%= link_to('New Ticket', new_ticket_path) if logged_in? %>

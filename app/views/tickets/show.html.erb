@@ -34,7 +34,7 @@
 
 <h2>Comments</h2>
 <% if @ticket.comments.size.zero? %>
-  <p>There are no comments.</p>
+  <em>There are no comments.</em>
 <% else %>
   <%= render @ticket.comments %>
 <% end %>

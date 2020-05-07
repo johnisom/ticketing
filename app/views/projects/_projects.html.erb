@@ -1,0 +1,23 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Open Tickets</th>
+      <th>Total Tickets</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td>
+          <strong><%= link_to project.name, project %></strong>
+          <br>
+          <%= project.description %>
+        </td>
+        <td align="center"><%= project.open_ticket_count %></td>
+        <td align="center"><%= project.ticket_count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

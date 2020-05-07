@@ -1,28 +1,16 @@
 <h1>Projects</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Open Tickets</th>
-      <th>Total Tickets</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td>
-          <strong><%= link_to project.name, project %></strong>
-          <br>
-          <%= project.description %>
-        </td>
-        <td align="center"><%= project.open_ticket_count %></td>
-        <td align="center"><%= project.ticket_count %></td>
-      </tr>
+<% if @projects.size.zero? %>
+  <em>
+    There are no projects.
+    <% if logged_in? %>
+      Want some?
+      <%= link_to 'Create one!', new_project_path %>
     <% end %>
-  </tbody>
-</table>
+  </em>
+<% else %>
+  <%= render 'projects' %>
+<% end %>
 
 <br>
 

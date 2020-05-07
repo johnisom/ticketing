@@ -9,4 +9,14 @@
 <%= link_to 'Back', projects_path %>
 
 <h2>Tickets</h2>
-<%= render 'tickets/tickets' %>
+<% if @tickets.size.zero? %>
+  <em>
+    There are no tickets.
+    <% if logged_in? %>
+      Want some?
+      <%= link_to 'Create one!', new_ticket_path %>
+    <% end %>
+  </em>
+<% else %>
+  <%= render 'tickets/tickets' %>
+<% end %>
