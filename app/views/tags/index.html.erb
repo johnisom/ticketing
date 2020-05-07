@@ -15,7 +15,12 @@
     <% @tags.each do |tag| %>
       <tr>
         <td><%= tag.name %></td>
-        <td align="center"><%= tag.ticket_count %></td>
+        <td align="center">
+          <%= link_to tag.ticket_count,
+                      controller: 'tickets',
+                      action: 'index',
+                      tag_id: tag.id %>
+        </td>
         <% if logged_in? %>
           <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
           <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
