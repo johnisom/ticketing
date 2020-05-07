@@ -6,8 +6,4 @@ class User < ApplicationRecord
 
   has_many :tickets
   has_many :comments
-
-  def self.alphabetical
-    all.sort_by(&:name)
-  end
 end
