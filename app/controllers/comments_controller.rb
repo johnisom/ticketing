@@ -9,6 +9,9 @@ class CommentsController < ApplicationController
     @ticket = @comment.ticket
 
     if @comment.save
+      @ticket.status = params[:ticket_status] if params[:ticket_status].present?
+      @ticket.save
+
       flash[:success] = 'Comment successfully saved.'
       redirect_to @comment.ticket
     else
@@ -26,6 +29,9 @@ class CommentsController < ApplicationController
     @ticket = @comment.ticket
 
     if @comment.update(update_comment_params)
+      @ticket.status = params[:ticket_status] if params[:ticket_status].present?
+      @ticket.save
+
       flash[:success] = 'Comment successfully updated.'
       redirect_to @comment.ticket
     else
