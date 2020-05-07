@@ -4,7 +4,16 @@ class TicketsController < ApplicationController
 
   # GET /tickets
   def index
-    @tickets = Ticket.all
+    @tickets = if params[:project_id].present? && params[:status].present?
+                 Ticket.where(project_id: params[:project_id],
+                              status: params[:status])
+               elsif params[:project_id].present?
+                 Ticket.where(project_id: params[:project_id])
+               elsif params[:status].present?
+                 Ticket.where(status: params[:status])
+               else
+                 Ticket.all
+               end
   end
 
   # GET /tickets/1
