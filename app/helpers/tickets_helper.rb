@@ -18,4 +18,20 @@ module TicketsHelper
        '-'
     end
   end
+
+  def project_filter_select
+    projects = Project.order(:name).map { |p| [p.name, p.id] }
+    project_opts = options_for_select(projects, params[:project_id])
+    select_tag :project_id, project_opts, include_blank: 'All Projects'
+  end
+
+  def ticket_statuses
+    Ticket::STATUSES.map { |s| [s.titleize, s] }
+  end
+
+  def status_filter_select
+    statuses = ticket_statuses
+    status_opts = options_for_select(statuses, params[:status])
+    select_tag :status, status_opts, include_blank: 'Any Status'
+  end
 end
